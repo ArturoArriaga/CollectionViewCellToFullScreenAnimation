@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
+class FeaturedProductCell: UICollectionViewCell {
     // reuseIdentifier encapsulated within cell.
     static let reuseIdentifier = "collectionViewCellId"
     let gradientLayer = CAGradientLayer()
@@ -41,7 +41,6 @@ class CollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCellShadow()
-        self.backgroundColor = UIColor.white
         self.addSubview(imageView)
         
         NSLayoutConstraint.activate([

@@ -23,7 +23,7 @@ class HeaderCell: UICollectionReusableView {
         hv.animate(withGIFNamed: "food")
         hv.backgroundColor = .white
         hv.translatesAutoresizingMaskIntoConstraints = false
-        hv.heightAnchor.constraint(equalToConstant: 145).isActive = true
+        hv.heightAnchor.constraint(equalToConstant: 135).isActive = true
         hv.widthAnchor.constraint(equalToConstant: 375).isActive = true
         hv.layer.cornerRadius = 12
         return hv
@@ -33,9 +33,9 @@ class HeaderCell: UICollectionReusableView {
         super.init(frame: frame)
         addSubview(headerView)
         headerView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        headerView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        headerView.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
         
-        delay(2.5) {
+        delay(2.4) {
             self.headerView.stopAnimatingGIF()
         }
     }

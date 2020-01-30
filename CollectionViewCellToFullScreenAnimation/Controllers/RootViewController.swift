@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class CollectionViewController: BaseCollectionViewController {
+class RootViewController: BaseCollectionViewController {
     
     let blueView : UIView = {
         let bc = UIView()
@@ -27,28 +27,54 @@ class CollectionViewController: BaseCollectionViewController {
     let cellId = "Cellid"
     let adHeader = "adHeader"
     
+//    let backgroundImage: UIImage = {
+//        let im = UIImage()
+//        im.withTintColor(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1))
+//        return im
+//    }()
+    
     lazy var veggieImagePath: String = Bundle.main.path(forResource: "veggiegif", ofType: "gif")!
     
     var fullscreenViewController : FullScreenController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Hi"
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.8726800444, green: 0.8202190767, blue: 0.732356349, alpha: 0.7715913955)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.view.backgroundColor = .red
+        self.navigationController?.navigationItem.leftBarButtonItem?.title = "Hi"
+        let label = UILabel()
+        label.textColor = UIColor.white
+        label.text = "Welcome"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+
         self.collectionView.backgroundColor = #colorLiteral(red: 0.9530013204, green: 0.9494226575, blue: 0.9284337759, alpha: 1)
         
-        self.collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.reuseIdentifier)
-        self.collectionView.register(BaseCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        self.collectionView.register(FeaturedProductCell.self, forCellWithReuseIdentifier: FeaturedProductCell.reuseIdentifier)
+        self.collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: cellId)
         
         self.collectionView.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
-        
+        self.collectionView.reloadData()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        presentFirstRunController()
+    }
 
+    fileprivate func presentFirstRunController() {
+        let lvc = BarCodeControler()
+        self.modalPresentationStyle = .pageSheet
+        self.present(lvc, animated: true)        
+    }
     
 }
 
 // MARK: Navigation
 /* This algorithm animates a cell to fullscreen and then back when the user desires. */
-extension CollectionViewController {
+extension RootViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         launchToFullScreen(indexPath)
     }
@@ -137,10 +163,10 @@ extension CollectionViewController {
 
 // MARK: DelegateFlowLayout Methods.
 // Conform to adjust size
-extension CollectionViewController: UICollectionViewDelegateFlowLayout {
+extension RootViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 {
-            return .init(width: self.view.frame.width, height: 170)
+            return .init(width: self.view.frame.width, height: 150)
         }
         return .init(width: self.view.frame.width, height: 100)
     }
@@ -160,7 +186,7 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
 
 
 // MARK: DataSource and Delegate Methods
-extension CollectionViewController {
+extension RootViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
@@ -178,14 +204,14 @@ extension CollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.item {
         case 1:
-            let baseCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseCollectionViewCell
+            let baseCell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedProductCell.reuseIdentifier, for: indexPath) as! FeaturedProductCell
             return baseCell
         case 3:
-            let alcell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseCollectionViewCell
+            let alcell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
             alcell.animatedImage.image = UIImage(named: "salmon")
             return alcell
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.reuseIdentifier, for: indexPath) as! CollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
             return cell
         }
         
@@ -199,7 +225,7 @@ struct ContentView: UIViewControllerRepresentable {
     }
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ContentView>) -> UIViewController {
-        return CollectionViewController()
+        return RootViewController()
     }
 }
 

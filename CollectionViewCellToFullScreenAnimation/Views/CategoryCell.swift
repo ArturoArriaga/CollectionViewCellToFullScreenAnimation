@@ -9,7 +9,7 @@
 import UIKit
 import Gifu
 
-class BaseCollectionViewCell: UICollectionViewCell {
+class CategoryCell: UICollectionViewCell {
     
     lazy var animatedImage: GIFImageView = {
         let aniImage = GIFImageView()
@@ -68,8 +68,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
         self.backgroundView?.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         self.backgroundView?.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         self.backgroundView?.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
-        self.backgroundView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.backgroundView?.backgroundColor = .white
         self.backgroundView?.layer.cornerRadius = 12
         self.backgroundView?.layer.shadowOpacity = 0.3
         self.backgroundView?.layer.shadowRadius = 10
