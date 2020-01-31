@@ -10,6 +10,7 @@ import UIKit
 import Gifu
 
 class CategoryCell: UICollectionViewCell {
+    static let reuseIdentifier = "categoryCellId"
     
     lazy var animatedImage: GIFImageView = {
         let aniImage = GIFImageView()

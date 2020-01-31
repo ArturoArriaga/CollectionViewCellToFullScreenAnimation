@@ -9,52 +9,25 @@ import UIKit
 
 class RootViewController: BaseCollectionViewController {
     
-    let blueView : UIView = {
-        let bc = UIView()
-        bc.backgroundColor = .blue
-        bc.translatesAutoresizingMaskIntoConstraints = false
-        bc.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        return bc
-    }()
 
    fileprivate var origninalStartingFrame: CGRect?
    fileprivate var topAnchor : NSLayoutConstraint?
    fileprivate var leadingAnchor : NSLayoutConstraint?
    fileprivate var widthAnchor : NSLayoutConstraint?
    fileprivate var heightAnchor : NSLayoutConstraint?
-    
-    let headerId = "headerId"
-    let cellId = "Cellid"
-    let adHeader = "adHeader"
-    
-//    let backgroundImage: UIImage = {
-//        let im = UIImage()
-//        im.withTintColor(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1))
-//        return im
-//    }()
-    
-    lazy var veggieImagePath: String = Bundle.main.path(forResource: "veggiegif", ofType: "gif")!
-    
+        
     var fullscreenViewController : FullScreenController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Hi"
-        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.8726800444, green: 0.8202190767, blue: 0.732356349, alpha: 0.7715913955)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.view.backgroundColor = .red
-        self.navigationController?.navigationItem.leftBarButtonItem?.title = "Hi"
-        let label = UILabel()
-        label.textColor = UIColor.white
-        label.text = "Welcome"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+        setupNavigationBar()
 
         self.collectionView.backgroundColor = #colorLiteral(red: 0.9530013204, green: 0.9494226575, blue: 0.9284337759, alpha: 1)
         
         self.collectionView.register(FeaturedProductCell.self, forCellWithReuseIdentifier: FeaturedProductCell.reuseIdentifier)
-        self.collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: cellId)
+        self.collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIdentifier)
         
-        self.collectionView.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        self.collectionView.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCell.reuseIdentifier)
         self.collectionView.reloadData()
 
     }
@@ -64,15 +37,44 @@ class RootViewController: BaseCollectionViewController {
 //        presentFirstRunController()
     }
 
-    fileprivate func presentFirstRunController() {
-        let lvc = BarCodeControler()
-        self.modalPresentationStyle = .pageSheet
-        self.present(lvc, animated: true)        
+    fileprivate func setupNavigationBar() {
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.8726800444, green: 0.8202190767, blue: 0.732356349, alpha: 0.7715913955)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        let logoView = UIImageView(image: UIImage(named: "cart"))
+        logoView.contentMode = .scaleAspectFit
+        logoView.translatesAutoresizingMaskIntoConstraints = false
+        logoView.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        self.navigationItem.titleView = logoView
+        
+        let color = #colorLiteral(red: 0.3098039329, green: 0.2039215714, blue: 0.03921568766, alpha: 1)
+        let label = UILabel()
+        label.attributedText = NSAttributedString(string: "Fresh Mart", attributes: [
+            .font : UIFont.boldSystemFont(ofSize: 20),
+            .foregroundColor: color
+        ])
+        
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.heightAnchor.constraint(equalToConstant: 20).isActive = true        
+     
     }
-    
+ 
 }
 
 // MARK: Navigation
+extension RootViewController {
+    fileprivate func presentFirstRunController() {
+        let lvc = BarCodeControler()
+        self.modalPresentationStyle = .pageSheet
+        self.present(lvc, animated: true)
+    }
+    
+    
+}
+
+
 /* This algorithm animates a cell to fullscreen and then back when the user desires. */
 extension RootViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -196,7 +198,7 @@ extension RootViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! HeaderCell
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCell.reuseIdentifier, for: indexPath) as! HeaderCell
             headerView.backgroundColor =  #colorLiteral(red: 0.8726800444, green: 0.8202190767, blue: 0.732356349, alpha: 0.77)
             return headerView
     }
@@ -204,15 +206,16 @@ extension RootViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.item {
         case 1:
-            let baseCell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedProductCell.reuseIdentifier, for: indexPath) as! FeaturedProductCell
-            return baseCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reuseIdentifier, for: indexPath) as! CategoryCell
+            return cell
         case 3:
-            let alcell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
+            let alcell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reuseIdentifier, for: indexPath) as! CategoryCell
             alcell.animatedImage.image = UIImage(named: "salmon")
             return alcell
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
-            return cell
+            let baseCell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedProductCell.reuseIdentifier, for: indexPath) as! FeaturedProductCell
+            return baseCell
+
         }
         
     }

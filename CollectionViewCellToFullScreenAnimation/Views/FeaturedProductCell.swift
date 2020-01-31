@@ -10,7 +10,7 @@ import UIKit
 
 class FeaturedProductCell: UICollectionViewCell {
     // reuseIdentifier encapsulated within cell.
-    static let reuseIdentifier = "collectionViewCellId"
+    static let reuseIdentifier = "featuredProductCellId"
     let gradientLayer = CAGradientLayer()
     
     let imageView: UIImageView = {

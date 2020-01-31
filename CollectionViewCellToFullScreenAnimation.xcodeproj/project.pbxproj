@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		590AFAA123E3A32B00E829DC /* man.png in Resources */ = {isa = PBXBuildFile; fileRef = 590AFAA023E3A32B00E829DC /* man.png */; };
 		59233E9F23E28454006B1754 /* food.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59233E9E23E28454006B1754 /* food.gif */; };
 		59233EA123E29187006B1754 /* BarCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59233EA023E29187006B1754 /* BarCodeController.swift */; };
 		59880AA023E2313C002FA5A9 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59880A9F23E2313C002FA5A9 /* HeaderCell.swift */; };
@@ -32,6 +33,7 @@
 		590AFA9323E3334B00E829DC /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		590AFA9423E3335E00E829DC /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		590AFA9523E3336D00E829DC /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
+		590AFAA023E3A32B00E829DC /* man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = man.png; sourceTree = "<group>"; };
 		59233E9E23E28454006B1754 /* food.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = food.gif; sourceTree = "<group>"; };
 		59233EA023E29187006B1754 /* BarCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeController.swift; sourceTree = "<group>"; };
 		59880A9F23E2313C002FA5A9 /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				59880AA123E23157002FA5A9 /* Views */,
 				59880AA223E2315E002FA5A9 /* Controllers */,
 				59BD399923DF3C8200A700A3 /* AppDelegate.swift */,
+				590AFAA023E3A32B00E829DC /* man.png */,
 				59BD399B23DF3C8200A700A3 /* SceneDelegate.swift */,
 				59BD399F23DF3C9000A700A3 /* Assets.xcassets */,
 				59BD39A423DF3C9000A700A3 /* LaunchScreen.storyboard */,
@@ -240,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				590AFAA123E3A32B00E829DC /* man.png in Resources */,
 				59BD39A623DF3C9000A700A3 /* LaunchScreen.storyboard in Resources */,
 				59BD39A323DF3C9000A700A3 /* Preview Assets.xcassets in Resources */,
 				59880AA623E23486002FA5A9 /* veggiegif.gif in Resources */,
