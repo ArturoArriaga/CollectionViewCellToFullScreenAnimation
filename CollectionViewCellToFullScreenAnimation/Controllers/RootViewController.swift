@@ -24,8 +24,8 @@ class RootViewController: BaseCollectionViewController {
 
         self.collectionView.backgroundColor = #colorLiteral(red: 0.9530013204, green: 0.9494226575, blue: 0.9284337759, alpha: 1)
         
-        self.collectionView.register(FeaturedProductCell.self, forCellWithReuseIdentifier: FeaturedProductCell.reuseIdentifier)
         self.collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIdentifier)
+        self.collectionView.register(FeaturedProductCell.self, forCellWithReuseIdentifier: FeaturedProductCell.reuseIdentifier)
         
         self.collectionView.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCell.reuseIdentifier)
         self.collectionView.reloadData()
@@ -38,7 +38,7 @@ class RootViewController: BaseCollectionViewController {
     }
 
     fileprivate func setupNavigationBar() {
-        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.8726800444, green: 0.8202190767, blue: 0.732356349, alpha: 0.7715913955)
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.988776967, green: 0.924134097, blue: 0.8355030791, alpha: 0.7715913955)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         let logoView = UIImageView(image: UIImage(named: "cart"))
@@ -47,10 +47,10 @@ class RootViewController: BaseCollectionViewController {
         logoView.heightAnchor.constraint(equalToConstant: 25).isActive = true
         self.navigationItem.titleView = logoView
         
-        let color = #colorLiteral(red: 0.3098039329, green: 0.2039215714, blue: 0.03921568766, alpha: 1)
+        let color = #colorLiteral(red: 0.1578280926, green: 0.5385968685, blue: 0.5154026151, alpha: 1)
         let label = UILabel()
         label.attributedText = NSAttributedString(string: "Fresh Mart", attributes: [
-            .font : UIFont.boldSystemFont(ofSize: 20),
+            .font : UIFont(name: "HomemadeApple-Regular", size: 16)!,
             .foregroundColor: color
         ])
         
@@ -168,12 +168,15 @@ extension RootViewController {
 extension RootViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 {
-            return .init(width: self.view.frame.width, height: 150)
+            return .init(width: self.view.frame.width, height: 180)
         }
         return .init(width: self.view.frame.width, height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.item % 2 == 0 {
+            return .init(width: self.view.frame.width, height: 370)
+        }
         return .init(width: self.view.frame.width - 64, height: 370)
     }
     
@@ -182,7 +185,7 @@ extension RootViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 20, left: 0, bottom: 20, right: 0)
+        return .init(top: 8, left: 0, bottom: 0, right: 0)
     }
 }
 
@@ -199,21 +202,20 @@ extension RootViewController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCell.reuseIdentifier, for: indexPath) as! HeaderCell
-            headerView.backgroundColor =  #colorLiteral(red: 0.8726800444, green: 0.8202190767, blue: 0.732356349, alpha: 0.77)
             return headerView
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.item {
         case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reuseIdentifier, for: indexPath) as! CategoryCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedProductCell.reuseIdentifier, for: indexPath) as! FeaturedProductCell
             return cell
         case 3:
-            let alcell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reuseIdentifier, for: indexPath) as! CategoryCell
+            let alcell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedProductCell.reuseIdentifier, for: indexPath) as! FeaturedProductCell
             alcell.animatedImage.image = UIImage(named: "salmon")
             return alcell
         default:
-            let baseCell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedProductCell.reuseIdentifier, for: indexPath) as! FeaturedProductCell
+            let baseCell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reuseIdentifier, for: indexPath) as! CategoryCell
             return baseCell
 
         }

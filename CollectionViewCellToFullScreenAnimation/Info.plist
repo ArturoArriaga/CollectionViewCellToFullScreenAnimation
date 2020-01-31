@@ -51,6 +51,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>HomemadeApple-Regular.ttf</string>
 		<string>Rubik-Medium.ttf</string>
 		<string>Rubik-Regular.ttf</string>
 		<string>Rubik-Light.ttf</string>

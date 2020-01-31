@@ -17,60 +17,65 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 class HeaderCell: UICollectionReusableView {
     static var reuseIdentifier = "headerCellId"
     
-    let nameLabel : UILabel = {
+    let label1 : UILabel = {
         let l = UILabel()
-        l.text = "James Dunn"
-        l.textColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
-        l.backgroundColor = UIColor(white: 0.9, alpha: 0.7)
-        l.font = .boldSystemFont(ofSize: 20)
+        l.text = " That was easy"
+        l.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        l.backgroundColor = #colorLiteral(red: 0.8718628287, green: 0.253423661, blue: 0.3765940666, alpha: 1)
+        l.font = UIFont(name: "Rubik-Medium", size: 20)
         l.textAlignment = .center
-        l.layer.cornerRadius = 12
+        l.layer.cornerRadius = 8
+        l.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         l.clipsToBounds = true
         l.translatesAutoresizingMaskIntoConstraints = false
-        l.heightAnchor.constraint(equalToConstant: 30).isActive = true
         l.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        l.heightAnchor.constraint(equalToConstant: 35).isActive = true
         return l
     }()
     
-    let accountImageView : UIImageView = {
-        let im = UIImageView(image: UIImage(named: "man"))
-        im.contentMode = .center
-        im.layer.cornerRadius = 32
-        im.layer.borderColor = UIColor(white: 0.7, alpha: 0.7).cgColor
-        im.layer.borderWidth = 1
-        im.clipsToBounds = true
-        im.translatesAutoresizingMaskIntoConstraints = false
-        im.heightAnchor.constraint(equalToConstant: 64).isActive = true
-        im.widthAnchor.constraint(equalToConstant: 64).isActive = true
-        return im
+    let subLabel : UILabel = {
+        let l = UILabel()
+        l.text = "Curbside pickup \nnow available"
+        l.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        l.font = UIFont(name: "Rubik-Medium", size: 22)
+        l.textAlignment = .right
+        l.layer.cornerRadius = 12
+        l.numberOfLines = 0
+        l.translatesAutoresizingMaskIntoConstraints = false
+        l.widthAnchor.constraint(equalToConstant: 175).isActive = true
+        l.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        return l
     }()
     
-    let headerView: GIFImageView = {
+    lazy var headerView: GIFImageView = {
         let hv = GIFImageView()
         hv.contentMode = .scaleAspectFill
         hv.clipsToBounds = true
-        hv.animate(withGIFNamed: "food")
+        hv.animate(withGIFNamed: "drive")
         hv.backgroundColor = .white
         hv.translatesAutoresizingMaskIntoConstraints = false
-        hv.heightAnchor.constraint(equalToConstant: 130).isActive = true
-        hv.widthAnchor.constraint(equalToConstant: 370).isActive = true
-        hv.layer.cornerRadius = 12
+        hv.widthAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
+        hv.layer.cornerRadius = 20
+        hv.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return hv
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(headerView)
-        headerView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        headerView.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
-        headerView.addSubview(nameLabel)
-        nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
-        headerView.addSubview(accountImageView)
-        accountImageView.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
-        accountImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -45).isActive = true
+        clipsToBounds = true
         
-        delay(2.4) {
+        headerView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        headerView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        headerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+        headerView.addSubview(label1)
+        label1.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -38).isActive = true
+        label1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
+        headerView.addSubview(subLabel)
+        subLabel.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
+        subLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        
+        delay(4) {
             self.headerView.stopAnimatingGIF()
         }
     }
