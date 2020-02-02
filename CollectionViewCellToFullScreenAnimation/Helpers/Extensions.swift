@@ -32,3 +32,10 @@ extension UIButton {
         self.setTitle(title, for: .normal)
     }
 }
+
+struct CustomFonts {
+    static let rubikMedium = "Rubik-Medium"
+    static let rubikRegular = "Rubik-Regular"
+    static let rubikLight = "Rubik-Light"
+    static let HomemadeApple = "HomemadeApple-Regular"
+}

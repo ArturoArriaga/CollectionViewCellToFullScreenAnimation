@@ -17,6 +17,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 class HeaderCell: UICollectionReusableView {
     static var reuseIdentifier = "headerCellId"
     
+    
     let label1 : UILabel = {
         let l = UILabel()
         l.text = " That was easy"
@@ -51,8 +52,8 @@ class HeaderCell: UICollectionReusableView {
         let hv = GIFImageView()
         hv.contentMode = .scaleAspectFill
         hv.clipsToBounds = true
-        hv.animate(withGIFNamed: "drive")
         hv.backgroundColor = .white
+        hv.animate(withGIFNamed: "drive")
         hv.translatesAutoresizingMaskIntoConstraints = false
         hv.widthAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
         hv.layer.cornerRadius = 20

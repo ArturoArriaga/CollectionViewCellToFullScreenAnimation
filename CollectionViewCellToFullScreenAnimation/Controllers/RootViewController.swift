@@ -17,6 +17,18 @@ class RootViewController: BaseCollectionViewController {
    fileprivate var heightAnchor : NSLayoutConstraint?
         
     var fullscreenViewController : FullScreenController!
+    
+    
+    var featuredProducts: [FeaturedItem] = [
+        FeaturedItem(image: "veggies", title: "The freshest produce", subtitle: "In season: grapefruits, Central Texas strawberries. "),
+        FeaturedItem(image: "salmon", title: "Japanese-style Salmon", subtitle: "with Garlic Rice and Ponzo Mayo"),
+    ]
+    
+    var products: [Product] = [
+        Product(itemName: "Peanut Butter", price: 6, imageName: "veggies"),
+        Product(itemName: "Peanut Butter", price: 6, imageName: "veggies"),
+    ]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,33 +36,35 @@ class RootViewController: BaseCollectionViewController {
 
         self.collectionView.backgroundColor = #colorLiteral(red: 0.9530013204, green: 0.9494226575, blue: 0.9284337759, alpha: 1)
         
-        self.collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIdentifier)
+        self.collectionView.register(ProductStreamCell.self, forCellWithReuseIdentifier: ProductStreamCell.reuseIdentifier)
         self.collectionView.register(FeaturedProductCell.self, forCellWithReuseIdentifier: FeaturedProductCell.reuseIdentifier)
         
         self.collectionView.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCell.reuseIdentifier)
         self.collectionView.reloadData()
 
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        presentFirstRunController()
+        print("view will appear")
+        collectionView.reloadData()
+            }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("view did appear")
+        collectionView.reloadData()
     }
 
     fileprivate func setupNavigationBar() {
-        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.988776967, green: 0.924134097, blue: 0.8355030791, alpha: 0.7715913955)
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9289988279, green: 0.9077536464, blue: 0.8706553578, alpha: 1)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        let logoView = UIImageView(image: UIImage(named: "cart"))
-        logoView.contentMode = .scaleAspectFit
-        logoView.translatesAutoresizingMaskIntoConstraints = false
-        logoView.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        self.navigationItem.titleView = logoView
-        
-        let color = #colorLiteral(red: 0.1578280926, green: 0.5385968685, blue: 0.5154026151, alpha: 1)
+        let color = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         let label = UILabel()
-        label.attributedText = NSAttributedString(string: "Fresh Mart", attributes: [
-            .font : UIFont(name: "HomemadeApple-Regular", size: 16)!,
+        label.attributedText = NSAttributedString(string: "Thrive Mart", attributes: [
+            .font : UIFont.systemFont(ofSize: 18, weight: .bold),
             .foregroundColor: color
         ])
         
@@ -65,11 +79,12 @@ class RootViewController: BaseCollectionViewController {
 
 // MARK: Navigation
 extension RootViewController {
-    fileprivate func presentFirstRunController() {
-        let lvc = BarCodeControler()
-        self.modalPresentationStyle = .pageSheet
-        self.present(lvc, animated: true)
-    }
+//    fileprivate func presentFirstRunController() {
+//        let lvc = LaunchScreenController()
+//        lvc.modalPresentationStyle = .fullScreen
+//        self.navigationController?.present(lvc, animated: false)
+////        self.present(lvc, animated: true)
+//    }
     
     
 }
@@ -87,6 +102,7 @@ extension RootViewController {
 
         UIView.animate(withDuration: 0.7, delay: 0.2, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
             // Setting constants to cover the screen.
+            self.navigationController?.navigationBar.isHidden = true
             self.topAnchor?.constant = 0
             self.leadingAnchor?.constant = 0
             self.widthAnchor?.constant = self.view.frame.width
@@ -144,7 +160,7 @@ extension RootViewController {
     // The opposite of the other animation method. Constants set back to the their original position.
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
             
-//            self.fullscreenViewController.stackView.isHidden = true
+            self.navigationController?.navigationBar.isHidden = false
             
             guard let backtoStartingFrame = self.origninalStartingFrame else { return }
             self.topAnchor?.constant = backtoStartingFrame.origin.y
@@ -175,7 +191,7 @@ extension RootViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item % 2 == 0 {
-            return .init(width: self.view.frame.width, height: 370)
+            return .init(width: self.view.frame.width, height: 250)
         }
         return .init(width: self.view.frame.width - 64, height: 370)
     }
@@ -185,7 +201,7 @@ extension RootViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 8, left: 0, bottom: 0, right: 0)
+        return .init(top: 10, left: 0, bottom: 10, right: 0)
     }
 }
 
@@ -197,45 +213,40 @@ extension RootViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        6
+        featuredProducts.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCell.reuseIdentifier, for: indexPath) as! HeaderCell
             return headerView
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.item {
-        case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedProductCell.reuseIdentifier, for: indexPath) as! FeaturedProductCell
-            return cell
-        case 3:
-            let alcell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedProductCell.reuseIdentifier, for: indexPath) as! FeaturedProductCell
-            alcell.animatedImage.image = UIImage(named: "salmon")
-            return alcell
-        default:
-            let baseCell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reuseIdentifier, for: indexPath) as! CategoryCell
-            return baseCell
-
-        }
         
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.item % 2 == 0 {
+            let baseCell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductStreamCell.reuseIdentifier, for: indexPath) as! ProductStreamCell
+            return baseCell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedProductCell.reuseIdentifier, for: indexPath) as! FeaturedProductCell
+            cell.featuredProduct = FeaturedItems.productStream[indexPath.item]
+            return cell
+        }
     }
 }
 
-
-import SwiftUI
-struct ContentView: UIViewControllerRepresentable {
-    func updateUIViewController(_ uiViewController: ContentView.UIViewControllerType, context: UIViewControllerRepresentableContext<ContentView>) {
-    }
-    
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ContentView>) -> UIViewController {
-        return RootViewController()
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().edgesIgnoringSafeArea(.all)
-    }
-}
+//
+//import SwiftUI
+//struct ContentView: UIViewControllerRepresentable {
+//    func updateUIViewController(_ uiViewController: ContentView.UIViewControllerType, context: UIViewControllerRepresentableContext<ContentView>) {
+//    }
+//
+//    func makeUIViewController(context: UIViewControllerRepresentableContext<ContentView>) -> UIViewController {
+//        return RootViewController()
+//    }
+//}
+//
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView().edgesIgnoringSafeArea(.all)
+//    }
+//}

@@ -12,17 +12,30 @@ import Gifu
 class FeaturedProductCell: UICollectionViewCell {
     static let reuseIdentifier = "categoryCellId"
     
-    lazy var animatedImage: GIFImageView = {
-        let aniImage = GIFImageView()
-        aniImage.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-        aniImage.contentMode = .scaleToFill
-        aniImage.clipsToBounds = true
-        aniImage.animate(withGIFNamed: "veggiegif")
-        aniImage.translatesAutoresizingMaskIntoConstraints = false
-        aniImage.heightAnchor.constraint(equalToConstant: 250).isActive = true
-        aniImage.layer.cornerRadius = 12
-        aniImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        return aniImage
+    var featuredProduct: FeaturedItem! {
+        didSet {
+            self.imageView.image = UIImage(named: featuredProduct.image)
+            self.titleLabel.text = featuredProduct.title
+        }
+    }
+    
+    var imageView = UIImageView(image: UIImage(named: "veggies"))
+    var titleLabel = UILabel(text: "Veggies and MORE :)", font: .systemFont(ofSize: 24), numberOfLines: 0)
+    
+    let label1 : UILabel = {
+        let l = UILabel()
+        l.text = "Texas Made"
+        l.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        l.backgroundColor = #colorLiteral(red: 0.339337945, green: 0.950001657, blue: 0.1244122311, alpha: 1)
+        l.font = UIFont(name: "Rubik-Medium", size: 20)
+        l.textAlignment = .center
+        l.layer.cornerRadius = 8
+        l.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        l.clipsToBounds = true
+        l.translatesAutoresizingMaskIntoConstraints = false
+        l.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        l.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        return l
     }()
     
     // CollectionViewCell has a property called isHighlighted. We can observe when it sets and run animation.
@@ -46,17 +59,24 @@ class FeaturedProductCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCellShadow()
-        addSubview(animatedImage)
+        addSubview(imageView)
+        addSubview(label1)
         
-        delay(5) {
-            self.animatedImage.stopAnimatingGIF()
-        }
+        NSLayoutConstraint.activate([
+            label1.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            label1.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
         
+        ])
         
-        animatedImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        animatedImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        animatedImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        animatedImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
+        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 220).isActive = true
     }
 
     

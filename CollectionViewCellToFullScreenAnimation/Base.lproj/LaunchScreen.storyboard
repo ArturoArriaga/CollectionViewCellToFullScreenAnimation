@@ -6,14 +6,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Rubik-Medium.ttf">
-            <string>Rubik-Medium</string>
-        </array>
-        <array key="Rubik-Regular.ttf">
-            <string>Rubik-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -23,40 +15,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A.A." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSd-8l-LN9">
-                                <rect key="frame" x="96" y="816" width="222" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="INc-os-hDW"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="12"/>
-                                <color key="textColor" red="0.1578280926" green="0.53859686849999999" blue="0.51540261509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart" translatesAutoresizingMaskIntoConstraints="NO" id="OMx-KI-gg5">
-                                <rect key="frame" x="115" y="374" width="171" height="49"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchVeggies" translatesAutoresizingMaskIntoConstraints="NO" id="0WS-Ao-aO5">
+                                <rect key="frame" x="10" y="260" width="394" height="376"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's save money." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfB-tP-PSh">
-                                <rect key="frame" x="59" y="431" width="296" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="ZHn-80-fD4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="24"/>
-                                <color key="textColor" red="0.1578280926" green="0.53859686849999999" blue="0.51540261509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.95300132039999996" green="0.94942265749999999" blue="0.92843377589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.99653452629999995" green="0.99667376279999997" blue="0.99649077649999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="JSd-8l-LN9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0js-42-8YR"/>
-                            <constraint firstItem="OMx-KI-gg5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="115" id="2g2-aJ-NG9"/>
-                            <constraint firstItem="gfB-tP-PSh" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="431" id="7pi-g7-B0G"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JSd-8l-LN9" secondAttribute="bottom" constant="22" id="94r-UC-z8U"/>
-                            <constraint firstItem="gfB-tP-PSh" firstAttribute="top" secondItem="OMx-KI-gg5" secondAttribute="bottom" constant="8" id="P8D-9e-a3M"/>
-                            <constraint firstItem="JSd-8l-LN9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="96" id="W6y-8c-Kjm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OMx-KI-gg5" secondAttribute="trailing" constant="128" id="WEp-zK-JfH"/>
-                            <constraint firstItem="gfB-tP-PSh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="59" id="hop-3e-Ke6"/>
-                            <constraint firstItem="OMx-KI-gg5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="330" id="luF-wk-Sw9"/>
-                            <constraint firstItem="gfB-tP-PSh" firstAttribute="centerX" secondItem="JSd-8l-LN9" secondAttribute="centerX" id="xbr-ld-jBZ"/>
+                            <constraint firstItem="0WS-Ao-aO5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="1mZ-B2-vRQ"/>
+                            <constraint firstItem="0WS-Ao-aO5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="216" id="BD1-7g-CBH"/>
+                            <constraint firstItem="0WS-Ao-aO5" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="NcB-GW-pS3"/>
+                            <constraint firstItem="0WS-Ao-aO5" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zK7-L4-ant"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -67,6 +35,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cart" width="135" height="138"/>
+        <image name="launchVeggies" width="749" height="777"/>
     </resources>
 </document>
