@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class LaunchScreenController: UIViewController {
     
     let imageView: UIImageView = {

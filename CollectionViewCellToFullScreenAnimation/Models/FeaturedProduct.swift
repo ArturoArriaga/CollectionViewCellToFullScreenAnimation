@@ -9,22 +9,8 @@
 import UIKit
 
 struct FeaturedItem {
-    let image: String
-    let title: String
+    let image, title: String
     let subtitle: String?
-}
-
-
-
-
-//
-struct FeaturedItems {
-    static let productStream: [FeaturedItem] = [
-        FeaturedItem(image: "", title: "", subtitle: ""),
-        
-        FeaturedItem(image: "veggies", title: "The freshest produce", subtitle: "Come see what's in season"),
-        FeaturedItem(image: "", title: "", subtitle: ""),
-        
-        FeaturedItem(image: "salmon", title: "Japanese-style Tilapia", subtitle: "with Garlic Rice and Ponzo Mayo")
-    ]
+    let color: UIColor?
+    let labelTitle: String?
 }

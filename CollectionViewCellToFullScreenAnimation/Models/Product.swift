@@ -8,11 +8,15 @@
 
 import Foundation
 
+struct Product: Equatable {
+    let itemName, imageName: String
+    var price: Float
+}
 
-struct Product {
-    let itemName: String
-    let price: Int
-    let imageName: String
-//    let title: String?
-//    let subtitle: String?
+extension Product {
+    //MARK: Equatable:
+    static func ==(lhs: Product, rhs: Product) -> Bool {
+        return lhs.itemName == rhs.itemName
+            && lhs.price == rhs.price
+    }
 }

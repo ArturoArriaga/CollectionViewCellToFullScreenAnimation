@@ -16,14 +16,16 @@ class FeaturedProductCell: UICollectionViewCell {
         didSet {
             self.imageView.image = UIImage(named: featuredProduct.image)
             self.titleLabel.text = featuredProduct.title
+            self.label1.backgroundColor = featuredProduct.color
+            self.label1.text = featuredProduct.labelTitle
         }
     }
-    
+        
     var imageView = UIImageView(image: UIImage(named: "veggies"))
     var titleLabel = UILabel(text: "Veggies and MORE :)", font: .systemFont(ofSize: 24), numberOfLines: 0)
     
-    let label1 : UILabel = {
-        let l = UILabel()
+    let label1 : CustomLabel = {
+        let l = CustomLabel(dxPadding: 0, dyPadding: 15, height: 35)
         l.text = "Texas Made"
         l.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         l.backgroundColor = #colorLiteral(red: 0.339337945, green: 0.950001657, blue: 0.1244122311, alpha: 1)
@@ -33,7 +35,7 @@ class FeaturedProductCell: UICollectionViewCell {
         l.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         l.clipsToBounds = true
         l.translatesAutoresizingMaskIntoConstraints = false
-        l.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        l.widthAnchor.constraint(greaterThanOrEqualToConstant: 175).isActive = true
         l.heightAnchor.constraint(equalToConstant: 35).isActive = true
         return l
     }()
@@ -62,6 +64,8 @@ class FeaturedProductCell: UICollectionViewCell {
         addSubview(imageView)
         addSubview(label1)
         
+        self.layer.cornerRadius = 12
+        
         NSLayoutConstraint.activate([
             label1.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             label1.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
@@ -70,6 +74,8 @@ class FeaturedProductCell: UICollectionViewCell {
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 12
+        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         imageView.clipsToBounds = true
         
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true

@@ -18,28 +18,20 @@ class RootViewController: BaseCollectionViewController {
         
     var fullscreenViewController : FullScreenController!
     
+   fileprivate let baseCellId = "cellId"
+   fileprivate let footerId = "footId"
     
-    var featuredProducts: [FeaturedItem] = [
-        FeaturedItem(image: "veggies", title: "The freshest produce", subtitle: "In season: grapefruits, Central Texas strawberries. "),
-        FeaturedItem(image: "salmon", title: "Japanese-style Salmon", subtitle: "with Garlic Rice and Ponzo Mayo"),
-    ]
-    
-    var products: [Product] = [
-        Product(itemName: "Peanut Butter", price: 6, imageName: "veggies"),
-        Product(itemName: "Peanut Butter", price: 6, imageName: "veggies"),
-    ]
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
 
         self.collectionView.backgroundColor = #colorLiteral(red: 0.9530013204, green: 0.9494226575, blue: 0.9284337759, alpha: 1)
         
-        self.collectionView.register(ProductStreamCell.self, forCellWithReuseIdentifier: ProductStreamCell.reuseIdentifier)
+        self.collectionView.register(ProductStreamCell.self, forCellWithReuseIdentifier: baseCellId)
         self.collectionView.register(FeaturedProductCell.self, forCellWithReuseIdentifier: FeaturedProductCell.reuseIdentifier)
         
         self.collectionView.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCell.reuseIdentifier)
+        self.collectionView.register(CouponFooterCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerId)
         self.collectionView.reloadData()
 
     }
@@ -93,10 +85,15 @@ extension RootViewController {
 /* This algorithm animates a cell to fullscreen and then back when the user desires. */
 extension RootViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        launchToFullScreen(indexPath)
+        switch indexPath.item {
+        case 1,3:
+            launchToFullScreen(indexPath)
+        default:
+            break
+        }
     }
     
-    fileprivate func launchToFullScreen (_ indexPath: IndexPath) {
+     func launchToFullScreen (_ indexPath: IndexPath) {
         setupFullScreenController(indexPath)
         setupFullScreenStartingPosition(indexPath)
 
@@ -189,6 +186,10 @@ extension RootViewController: UICollectionViewDelegateFlowLayout {
         return .init(width: self.view.frame.width, height: 100)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return .init(width: self.view.frame.width, height: 180)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item % 2 == 0 {
             return .init(width: self.view.frame.width, height: 250)
@@ -213,23 +214,36 @@ extension RootViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        featuredProducts.count
+        5
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCell.reuseIdentifier, for: indexPath) as! HeaderCell
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCell.reuseIdentifier, for: indexPath) as! HeaderCell
             return headerView
+        case UICollectionView.elementKindSectionFooter:
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerId, for: indexPath) as! CouponFooterCell
+            footerView.backgroundColor = #colorLiteral(red: 0.9530013204, green: 0.9494226575, blue: 0.9284337759, alpha: 1)
+            return footerView
+        default:
+            assert(false, "Unexpected")
+        }
     }
         
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if indexPath.item % 2 == 0 {
-            let baseCell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductStreamCell.reuseIdentifier, for: indexPath) as! ProductStreamCell
-            return baseCell
-        } else {
+        switch indexPath.item {
+        case 1,3:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedProductCell.reuseIdentifier, for: indexPath) as! FeaturedProductCell
             cell.featuredProduct = FeaturedItems.productStream[indexPath.item]
             return cell
+        default:
+            let productStreamCell = collectionView.dequeueReusableCell(withReuseIdentifier: baseCellId, for: indexPath) as! ProductStreamCell
+            productStreamCell.categoryLabel.text = ProductSteamTitles.titles[indexPath.item]
+            productStreamCell.horizontalProductController.products = ProductStreams.stream[indexPath.item]
+            productStreamCell.horizontalProductController.adImage = AdStream.ads[indexPath.item]
+            return productStreamCell
         }
     }
 }
