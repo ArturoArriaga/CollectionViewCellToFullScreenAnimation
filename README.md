@@ -12,5 +12,7 @@ UICollectionViewController
 Container rootcontroller 
 MVC Model
 
+![](ThriveMart1.png)
+
 
 
