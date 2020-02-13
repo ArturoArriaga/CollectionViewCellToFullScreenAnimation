@@ -14,6 +14,7 @@ MVC Model
 
 ![](ThriveMar1.png)
 ![](ThriveMart2.png)
+![](ThriveMart3.png)
 
 
 
