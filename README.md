@@ -12,7 +12,8 @@ UICollectionViewController
 Container rootcontroller 
 MVC Model
 
-![](ThriveMart1.png)
+![](ThriveMar1.png)
+![](ThriveMart2.png)
 
 
 
