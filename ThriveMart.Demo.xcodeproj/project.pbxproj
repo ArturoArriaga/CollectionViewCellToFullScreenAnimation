@@ -64,7 +64,7 @@
 		59880A9F23E2313C002FA5A9 /* CurbsideHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurbsideHeaderCell.swift; sourceTree = "<group>"; };
 		59880AA323E23195002FA5A9 /* AdvertisementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementCell.swift; sourceTree = "<group>"; };
 		59908F0623E24337004ADD78 /* FeaturedProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedProductCell.swift; sourceTree = "<group>"; };
-		59BD399623DF3C8200A700A3 /* CollectionViewCellToFullScreenAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewCellToFullScreenAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		59BD399623DF3C8200A700A3 /* ThriveMart.Arriaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThriveMart.Arriaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59BD399923DF3C8200A700A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59BD399B23DF3C8200A700A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		59BD399D23DF3C8200A700A3 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 		59BD399723DF3C8200A700A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				59BD399623DF3C8200A700A3 /* CollectionViewCellToFullScreenAnimation.app */,
+				59BD399623DF3C8200A700A3 /* ThriveMart.Arriaga.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -287,9 +287,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		59BD399523DF3C8200A700A3 /* CollectionViewCellToFullScreenAnimation */ = {
+		59BD399523DF3C8200A700A3 /* ThriveMart.Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 59BD39AA23DF3C9000A700A3 /* Build configuration list for PBXNativeTarget "CollectionViewCellToFullScreenAnimation" */;
+			buildConfigurationList = 59BD39AA23DF3C9000A700A3 /* Build configuration list for PBXNativeTarget "ThriveMart.Demo" */;
 			buildPhases = (
 				3E82DE5F39A8D834C8352DAD /* [CP] Check Pods Manifest.lock */,
 				59BD399223DF3C8200A700A3 /* Sources */,
@@ -301,9 +301,9 @@
 			);
 			dependencies = (
 			);
-			name = CollectionViewCellToFullScreenAnimation;
+			name = ThriveMart.Demo;
 			productName = CollectionViewCellToFullScreenAnimation;
-			productReference = 59BD399623DF3C8200A700A3 /* CollectionViewCellToFullScreenAnimation.app */;
+			productReference = 59BD399623DF3C8200A700A3 /* ThriveMart.Arriaga.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -321,7 +321,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 59BD399123DF3C8200A700A3 /* Build configuration list for PBXProject "CollectionViewCellToFullScreenAnimation" */;
+			buildConfigurationList = 59BD399123DF3C8200A700A3 /* Build configuration list for PBXProject "ThriveMart.Demo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -334,7 +334,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				59BD399523DF3C8200A700A3 /* CollectionViewCellToFullScreenAnimation */,
+				59BD399523DF3C8200A700A3 /* ThriveMart.Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -575,7 +575,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AA.CollectionViewCellToFullScreenAnimation;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ThriveMart.Arriaga;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -596,7 +596,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AA.CollectionViewCellToFullScreenAnimation;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ThriveMart.Arriaga;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -605,7 +605,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		59BD399123DF3C8200A700A3 /* Build configuration list for PBXProject "CollectionViewCellToFullScreenAnimation" */ = {
+		59BD399123DF3C8200A700A3 /* Build configuration list for PBXProject "ThriveMart.Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				59BD39A823DF3C9000A700A3 /* Debug */,
@@ -614,7 +614,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		59BD39AA23DF3C9000A700A3 /* Build configuration list for PBXNativeTarget "CollectionViewCellToFullScreenAnimation" */ = {
+		59BD39AA23DF3C9000A700A3 /* Build configuration list for PBXNativeTarget "ThriveMart.Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				59BD39AB23DF3C9000A700A3 /* Debug */,
