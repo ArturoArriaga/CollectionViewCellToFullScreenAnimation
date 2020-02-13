@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5909E23523E78E9300CBE3A7 /* UILabel + Inset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5909E23423E78E9300CBE3A7 /* UILabel + Inset.swift */; };
-		5909E23723E8E52E00CBE3A7 /* mapsIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5909E23623E8E52E00CBE3A7 /* mapsIcon.jpg */; };
 		590AFAA523E497F800E829DC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590AFAA423E497F800E829DC /* Extensions.swift */; };
 		59139A9723E4B87800710004 /* HomemadeApple-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59139A9623E4B84A00710004 /* HomemadeApple-Regular.ttf */; };
 		59139A9923E4E77C00710004 /* ItemStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59139A9823E4E77C00710004 /* ItemStackView.swift */; };
@@ -19,6 +18,7 @@
 		591FAC4223F261A000B9EC7F /* trees2.png in Resources */ = {isa = PBXBuildFile; fileRef = 591FAC4123F2619F00B9EC7F /* trees2.png */; };
 		591FAC4423F3067100B9EC7F /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591FAC4323F3067100B9EC7F /* Cart.swift */; };
 		591FAC4623F3077A00B9EC7F /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591FAC4523F3077A00B9EC7F /* CartItem.swift */; };
+		591FAC4823F360CC00B9EC7F /* CouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591FAC4723F360CC00B9EC7F /* CouponCell.swift */; };
 		59233EA123E29187006B1754 /* BarCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59233EA023E29187006B1754 /* BarCodeController.swift */; };
 		594A507023E9374B00536028 /* FooterCouponController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A506F23E9374B00536028 /* FooterCouponController.swift */; };
 		59880AA023E2313C002FA5A9 /* CurbsideHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59880A9F23E2313C002FA5A9 /* CurbsideHeaderCell.swift */; };
@@ -34,7 +34,6 @@
 		59BD39B023DF42D100A700A3 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD39AF23DF42D100A700A3 /* BaseCollectionViewController.swift */; };
 		59BD39B223DF4B6600A700A3 /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BD39B123DF4B6600A700A3 /* FullScreenViewController.swift */; };
 		59EA767A23E77B4C00EC5C50 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EA767923E77B4C00EC5C50 /* ProductCell.swift */; };
-		59EF17E923E931E300DD5789 /* QRCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 59EF17E823E931E300DD5789 /* QRCode.png */; };
 		59F121B123E91A6000BF2BB9 /* DataStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F121B023E91A6000BF2BB9 /* DataStreams.swift */; };
 		59F121B423E9224300BF2BB9 /* CouponFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F121B323E9224300BF2BB9 /* CouponFooterCell.swift */; };
 		59F7536823E66FDB001A493F /* FeaturedProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F7536723E66FDB001A493F /* FeaturedProduct.swift */; };
@@ -49,7 +48,6 @@
 		244361176C2B5EA747B52E74 /* Pods_CollectionViewCellToFullScreenAnimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollectionViewCellToFullScreenAnimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0D17EB7977F474B8FD1DD6 /* Pods-CollectionViewCellToFullScreenAnimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionViewCellToFullScreenAnimation.debug.xcconfig"; path = "Target Support Files/Pods-CollectionViewCellToFullScreenAnimation/Pods-CollectionViewCellToFullScreenAnimation.debug.xcconfig"; sourceTree = "<group>"; };
 		5909E23423E78E9300CBE3A7 /* UILabel + Inset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Inset.swift"; sourceTree = "<group>"; };
-		5909E23623E8E52E00CBE3A7 /* mapsIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mapsIcon.jpg; sourceTree = "<group>"; };
 		590AFA9323E3334B00E829DC /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		590AFA9423E3335E00E829DC /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		590AFA9523E3336D00E829DC /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
@@ -60,6 +58,7 @@
 		591FAC4123F2619F00B9EC7F /* trees2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trees2.png; sourceTree = "<group>"; };
 		591FAC4323F3067100B9EC7F /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		591FAC4523F3077A00B9EC7F /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
+		591FAC4723F360CC00B9EC7F /* CouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCell.swift; sourceTree = "<group>"; };
 		59233EA023E29187006B1754 /* BarCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeController.swift; sourceTree = "<group>"; };
 		594A506F23E9374B00536028 /* FooterCouponController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCouponController.swift; sourceTree = "<group>"; };
 		59880A9F23E2313C002FA5A9 /* CurbsideHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurbsideHeaderCell.swift; sourceTree = "<group>"; };
@@ -77,7 +76,6 @@
 		59BD39AF23DF42D100A700A3 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		59BD39B123DF4B6600A700A3 /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
 		59EA767923E77B4C00EC5C50 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
-		59EF17E823E931E300DD5789 /* QRCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QRCode.png; sourceTree = "<group>"; };
 		59F121B023E91A6000BF2BB9 /* DataStreams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStreams.swift; sourceTree = "<group>"; };
 		59F121B323E9224300BF2BB9 /* CouponFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponFooterCell.swift; sourceTree = "<group>"; };
 		59F7536723E66FDB001A493F /* FeaturedProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedProduct.swift; sourceTree = "<group>"; };
@@ -188,8 +186,6 @@
 				591FAC4123F2619F00B9EC7F /* trees2.png */,
 				59BD399923DF3C8200A700A3 /* AppDelegate.swift */,
 				59BD399B23DF3C8200A700A3 /* SceneDelegate.swift */,
-				59EF17E823E931E300DD5789 /* QRCode.png */,
-				5909E23623E8E52E00CBE3A7 /* mapsIcon.jpg */,
 				59BD399F23DF3C9000A700A3 /* Assets.xcassets */,
 				59BD39A423DF3C9000A700A3 /* LaunchScreen.storyboard */,
 				59139AA623E6196000710004 /* LaunchScreenController.swift */,
@@ -245,6 +241,7 @@
 			children = (
 				59880A9F23E2313C002FA5A9 /* CurbsideHeaderCell.swift */,
 				59F121B323E9224300BF2BB9 /* CouponFooterCell.swift */,
+				591FAC4723F360CC00B9EC7F /* CouponCell.swift */,
 			);
 			path = "Header and Footer";
 			sourceTree = "<group>";
@@ -353,8 +350,6 @@
 				591840AF23E49A2A0017912F /* Rubik-Regular.ttf in Resources */,
 				59BD39A323DF3C9000A700A3 /* Preview Assets.xcassets in Resources */,
 				591840B023E49A2E0017912F /* Rubik-Light.ttf in Resources */,
-				5909E23723E8E52E00CBE3A7 /* mapsIcon.jpg in Resources */,
-				59EF17E923E931E300DD5789 /* QRCode.png in Resources */,
 				59BD39A023DF3C9000A700A3 /* Assets.xcassets in Resources */,
 				59139A9723E4B87800710004 /* HomemadeApple-Regular.ttf in Resources */,
 				591840AE23E49A260017912F /* Rubik-Medium.ttf in Resources */,
@@ -425,6 +420,7 @@
 				590AFAA523E497F800E829DC /* Extensions.swift in Sources */,
 				59233EA123E29187006B1754 /* BarCodeController.swift in Sources */,
 				59BD399E23DF3C8200A700A3 /* RootViewController.swift in Sources */,
+				591FAC4823F360CC00B9EC7F /* CouponCell.swift in Sources */,
 				591FAC4423F3067100B9EC7F /* Cart.swift in Sources */,
 				59BD39B023DF42D100A700A3 /* BaseCollectionViewController.swift in Sources */,
 				59880AA423E23195002FA5A9 /* AdvertisementCell.swift in Sources */,

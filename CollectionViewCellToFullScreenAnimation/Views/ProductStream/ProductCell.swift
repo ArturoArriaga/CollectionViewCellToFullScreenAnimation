@@ -13,7 +13,7 @@ class ProductCell: UICollectionViewCell {
     var product: Product! {
         didSet {
             self.itemStackView.imageView.image = UIImage(named: product.imageName)
-            self.itemStackView.priceLabel.text = String(product.price)
+            self.itemStackView.priceLabel.text = " $\(String(product.price))"
             self.itemStackView.productName.text = product.itemName
         }
     }

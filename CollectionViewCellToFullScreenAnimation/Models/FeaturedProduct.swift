@@ -13,4 +13,5 @@ struct FeaturedItem {
     let subtitle: String?
     let color: UIColor?
     let labelTitle: String?
+    let bgroundColor: UIColor?
 }

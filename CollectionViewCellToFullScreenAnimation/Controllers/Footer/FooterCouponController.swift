@@ -12,49 +12,32 @@ class FooterCouponController: UICollectionViewController, UICollectionViewDelega
     
     let couponId = "couponId"
     
+//    var didSelecthandler: (() -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.backgroundColor = #colorLiteral(red: 0.9530013204, green: 0.9494226575, blue: 0.9284337759, alpha: 1)
-        self.collectionView.isScrollEnabled = false
-        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: couponId)
+        self.collectionView.register(CouponCell.self, forCellWithReuseIdentifier: couponId)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let bvc = BarCodeControler()
-        bvc.modalPresentationStyle = .fullScreen
-        self.present(bvc, animated: true)
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        3
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.collectionView.reloadData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.collectionView.reloadData()
-    }
+
     
     let imageView = UIImageView(image: UIImage(named: "coupon.tide"))
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: couponId, for: indexPath)
-        cell.layer.cornerRadius = 50
-        cell.clipsToBounds = true
-        cell.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-            
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: couponId, for: indexPath) as! CouponCell
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: self.view.frame.width, height: 120)
+        return .init(width: 50, height: 70)
     }
     
     init() {

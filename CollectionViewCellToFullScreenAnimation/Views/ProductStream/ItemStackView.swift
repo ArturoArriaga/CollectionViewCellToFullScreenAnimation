@@ -30,7 +30,7 @@ class ItemStackView : UIStackView {
     }()
     
     let priceLabel: UILabel = {
-        let v = UILabel(text: " $ 6.98", font: UIFont(name: "Rubik-Regular", size: 14)!, numberOfLines: 1)
+        let v = UILabel(text: "", font: UIFont(name: "Rubik-Regular", size: 14)!, numberOfLines: 1)
         v.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         return v
     }()

@@ -9,7 +9,7 @@ import UIKit
 
 
 class ProductStreamCell: UICollectionViewCell {
-    
+    static let reuseIdentifier = "productStreamId"
     var horizontalProductController = ProductStreamController()
     
     let categoryLabel : CustomLabel = {

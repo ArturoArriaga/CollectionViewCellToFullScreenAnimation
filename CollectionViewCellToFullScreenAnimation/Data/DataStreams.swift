@@ -10,10 +10,10 @@ import UIKit
 
 struct FeaturedItems {
     static let productStream: [FeaturedItem] = [
-        FeaturedItem(image: "", title: "", subtitle: "", color: nil, labelTitle: nil),
-        FeaturedItem(image: "veggies", title: "The freshest produce", subtitle: "Come see what's in season", color: #colorLiteral(red: 0.339337945, green: 0.950001657, blue: 0.1244122311, alpha: 1), labelTitle: "Texas Made"),
-        FeaturedItem(image: "", title: "", subtitle: "", color: nil, labelTitle: nil),
-        FeaturedItem(image: "salmon", title: "Japanese-style Tilapia", subtitle: "with Garlic Rice and Ponzo Mayo", color: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), labelTitle: "Featured Dinner")
+        FeaturedItem(image: "", title: "", subtitle: "", color: nil, labelTitle: nil, bgroundColor: nil),
+        FeaturedItem(image: "veggies", title: "The best deals on the freshest produce.", subtitle: "Come see what's in season", color: #colorLiteral(red: 0.339337945, green: 0.950001657, blue: 0.1244122311, alpha: 1), labelTitle: "Texas Made", bgroundColor: #colorLiteral(red: 1, green: 0.8468040824, blue: 0.5241650939, alpha: 1)),
+        FeaturedItem(image: "", title: "", subtitle: "", color: nil, labelTitle: nil, bgroundColor: nil),
+        FeaturedItem(image: "salmon", title: "Japanese-style Tilapia", subtitle: "with Garlic Rice and Ponzo Mayo", color: #colorLiteral(red: 0.4476395845, green: 0.3211132884, blue: 0.8234208226, alpha: 1), labelTitle: "Featured Dinner", bgroundColor: #colorLiteral(red: 0.8975660205, green: 0.9049866796, blue: 0.9588567615, alpha: 1))
     ]
 }
 

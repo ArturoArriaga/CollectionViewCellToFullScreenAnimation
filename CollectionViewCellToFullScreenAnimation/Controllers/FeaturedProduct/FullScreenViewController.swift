@@ -11,6 +11,12 @@ import UIKit
 
 class FullScreenController: UITableViewController {
     
+    var featuredProduct: FeaturedItem? {
+        didSet {
+            self.view.backgroundColor = featuredProduct?.bgroundColor
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
@@ -25,6 +31,7 @@ extension FullScreenController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.item == 0 {
             let topCell = TopCell()
+            topCell.featuredItem = self.featuredProduct
             return topCell
         }
         let cell = BottomCell()
@@ -40,13 +47,17 @@ extension FullScreenController {
 }
 
 class TopCell: UITableViewCell {
+    
+    var featuredItem: FeaturedItem! {
+        didSet {
+            self.topImageView.image = UIImage(named: featuredItem.image)
+        }
+    }
     lazy var topImageView: UIImageView = {
         let imv = UIImageView(image: UIImage(named: "fruit.banana")!)
         imv.contentMode = .scaleAspectFill
-        imv.layer.cornerRadius = 8
         imv.clipsToBounds = true
         imv.translatesAutoresizingMaskIntoConstraints = false
-        imv.heightAnchor.constraint(equalToConstant: 200).isActive = true
         imv.widthAnchor.constraint(equalToConstant: 200).isActive = true
         return imv
         
@@ -55,9 +66,17 @@ class TopCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(topImageView)
-        self.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
-        topImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        topImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        NSLayoutConstraint.activate([
+            topImageView.topAnchor.constraint(equalTo: topAnchor),
+            topImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            topImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            topImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            topImageView.heightAnchor.constraint(equalToConstant: 210)
+        
+        ])
+
         
     }
 

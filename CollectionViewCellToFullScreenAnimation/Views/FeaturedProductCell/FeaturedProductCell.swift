@@ -16,15 +16,16 @@ class FeaturedProductCell: UICollectionViewCell {
         didSet {
             self.imageView.image = UIImage(named: featuredProduct.image)
             self.titleLabel.text = featuredProduct.title
-            self.label1.backgroundColor = featuredProduct.color
-            self.label1.text = featuredProduct.labelTitle
+            self.highLightLabel.backgroundColor = featuredProduct.color
+            self.highLightLabel.text = featuredProduct.labelTitle
         }
     }
+    
         
     var imageView = UIImageView(image: UIImage(named: "veggies"))
-    var titleLabel = UILabel(text: "Veggies and MORE :)", font: .systemFont(ofSize: 24), numberOfLines: 0)
+    var titleLabel = UILabel(text: "The best deals on freshest produce.", font: .systemFont(ofSize: 24), numberOfLines: 0)
     
-    let label1 : CustomLabel = {
+    let highLightLabel : CustomLabel = {
         let l = CustomLabel(dxPadding: 0, dyPadding: 15, height: 35)
         l.text = "Texas Made"
         l.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -62,13 +63,20 @@ class FeaturedProductCell: UICollectionViewCell {
         super.init(frame: frame)
         setupCellShadow()
         addSubview(imageView)
-        addSubview(label1)
+        addSubview(highLightLabel)
+        addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.layer.cornerRadius = 12
         
         NSLayoutConstraint.activate([
-            label1.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            label1.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
+            highLightLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            highLightLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30),
+            titleLabel.widthAnchor.constraint(equalToConstant: 300),
+            titleLabel.heightAnchor.constraint(equalToConstant: 100)
         
         ])
         

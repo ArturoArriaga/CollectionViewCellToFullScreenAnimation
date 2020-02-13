@@ -8,45 +8,31 @@
 import UIKit
 
 class RootViewController: BaseCollectionViewController {
+    //MARK: Instance Properites
+    fileprivate var origninalStartingFrame: CGRect?
     
-
-   fileprivate var origninalStartingFrame: CGRect?
-   fileprivate var topAnchor : NSLayoutConstraint?
-   fileprivate var leadingAnchor : NSLayoutConstraint?
-   fileprivate var widthAnchor : NSLayoutConstraint?
-   fileprivate var heightAnchor : NSLayoutConstraint?
-        
+    fileprivate var topAnchor : NSLayoutConstraint?
+    fileprivate var leadingAnchor : NSLayoutConstraint?
+    fileprivate var widthAnchor : NSLayoutConstraint?
+    fileprivate var heightAnchor : NSLayoutConstraint?
+    
     var fullscreenViewController : FullScreenController!
-    
+
    fileprivate let baseCellId = "cellId"
-   fileprivate let footerId = "footId"
     
+    //MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
 
         self.collectionView.backgroundColor = #colorLiteral(red: 0.9530013204, green: 0.9494226575, blue: 0.9284337759, alpha: 1)
         
-        self.collectionView.register(ProductStreamCell.self, forCellWithReuseIdentifier: baseCellId)
+        self.collectionView.register(ProductStreamCell.self, forCellWithReuseIdentifier: ProductStreamCell.reuseIdentifier)
         self.collectionView.register(FeaturedProductCell.self, forCellWithReuseIdentifier: FeaturedProductCell.reuseIdentifier)
-        
         self.collectionView.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCell.reuseIdentifier)
-        self.collectionView.register(CouponFooterCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerId)
+//        self.collectionView.register(CouponFooterCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerId)
         self.collectionView.reloadData()
 
-    }
-
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("view will appear")
-        collectionView.reloadData()
-            }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("view did appear")
-        collectionView.reloadData()
     }
 
     fileprivate func setupNavigationBar() {
@@ -60,7 +46,6 @@ class RootViewController: BaseCollectionViewController {
             .foregroundColor: color
         ])
         
-        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.heightAnchor.constraint(equalToConstant: 20).isActive = true        
@@ -71,18 +56,11 @@ class RootViewController: BaseCollectionViewController {
 
 // MARK: Navigation
 extension RootViewController {
-//    fileprivate func presentFirstRunController() {
-//        let lvc = LaunchScreenController()
-//        lvc.modalPresentationStyle = .fullScreen
-//        self.navigationController?.present(lvc, animated: false)
-////        self.present(lvc, animated: true)
-//    }
-    
-    
 }
 
 
 /* This algorithm animates a cell to fullscreen and then back when the user desires. */
+//MARK: Did Select Item
 extension RootViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.item {
@@ -112,9 +90,9 @@ extension RootViewController {
     
     fileprivate func setupFullScreenController(_ indexPath: IndexPath) {
         let fsc = FullScreenController()
+        fsc.featuredProduct = FeaturedItems.productStream[indexPath.item]
         fsc.view.layer.cornerRadius = 12
         self.fullscreenViewController = fsc
-        
     }
     
     fileprivate func setupFullScreenStartingPosition(_ indexPath: IndexPath) {
@@ -186,9 +164,9 @@ extension RootViewController: UICollectionViewDelegateFlowLayout {
         return .init(width: self.view.frame.width, height: 100)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return .init(width: self.view.frame.width, height: 180)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+//        return .init(width: self.view.frame.width, height: 150)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item % 2 == 0 {
@@ -218,17 +196,19 @@ extension RootViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCell.reuseIdentifier, for: indexPath) as! HeaderCell
-            return headerView
-        case UICollectionView.elementKindSectionFooter:
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerId, for: indexPath) as! CouponFooterCell
-            footerView.backgroundColor = #colorLiteral(red: 0.9530013204, green: 0.9494226575, blue: 0.9284337759, alpha: 1)
-            return footerView
-        default:
-            assert(false, "Unexpected")
-        }
+//        switch kind {
+//        case UICollectionView.elementKindSectionHeader:
+//            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCell.reuseIdentifier, for: indexPath) as! HeaderCell
+//            return headerView
+//        case UICollectionView.elementKindSectionFooter:
+//            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerId, for: indexPath) as! CouponFooterCell
+//            return footerView
+//        default:
+//            assert(false, "Unexpected")
+//        }
+        
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCell.reuseIdentifier, for: indexPath) as! HeaderCell
+        return headerView
     }
         
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -239,7 +219,7 @@ extension RootViewController {
             cell.featuredProduct = FeaturedItems.productStream[indexPath.item]
             return cell
         default:
-            let productStreamCell = collectionView.dequeueReusableCell(withReuseIdentifier: baseCellId, for: indexPath) as! ProductStreamCell
+            let productStreamCell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductStreamCell.reuseIdentifier, for: indexPath) as! ProductStreamCell
             productStreamCell.categoryLabel.text = ProductSteamTitles.titles[indexPath.item]
             productStreamCell.horizontalProductController.products = ProductStreams.stream[indexPath.item]
             productStreamCell.horizontalProductController.adImage = AdStream.ads[indexPath.item]
@@ -248,19 +228,3 @@ extension RootViewController {
     }
 }
 
-//
-//import SwiftUI
-//struct ContentView: UIViewControllerRepresentable {
-//    func updateUIViewController(_ uiViewController: ContentView.UIViewControllerType, context: UIViewControllerRepresentableContext<ContentView>) {
-//    }
-//
-//    func makeUIViewController(context: UIViewControllerRepresentableContext<ContentView>) -> UIViewController {
-//        return RootViewController()
-//    }
-//}
-//
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView().edgesIgnoringSafeArea(.all)
-//    }
-//}
