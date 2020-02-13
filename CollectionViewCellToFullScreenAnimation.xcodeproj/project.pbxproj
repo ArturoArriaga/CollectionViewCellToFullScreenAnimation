@@ -287,9 +287,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		59BD399523DF3C8200A700A3 /* ThriveMart.Demo */ = {
+		59BD399523DF3C8200A700A3 /* CollectionViewCellToFullScreenAnimation */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 59BD39AA23DF3C9000A700A3 /* Build configuration list for PBXNativeTarget "ThriveMart.Demo" */;
+			buildConfigurationList = 59BD39AA23DF3C9000A700A3 /* Build configuration list for PBXNativeTarget "CollectionViewCellToFullScreenAnimation" */;
 			buildPhases = (
 				3E82DE5F39A8D834C8352DAD /* [CP] Check Pods Manifest.lock */,
 				59BD399223DF3C8200A700A3 /* Sources */,
@@ -301,7 +301,7 @@
 			);
 			dependencies = (
 			);
-			name = ThriveMart.Demo;
+			name = CollectionViewCellToFullScreenAnimation;
 			productName = CollectionViewCellToFullScreenAnimation;
 			productReference = 59BD399623DF3C8200A700A3 /* ThriveMart.Arriaga.app */;
 			productType = "com.apple.product-type.application";
@@ -321,7 +321,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 59BD399123DF3C8200A700A3 /* Build configuration list for PBXProject "ThriveMart.Demo" */;
+			buildConfigurationList = 59BD399123DF3C8200A700A3 /* Build configuration list for PBXProject "CollectionViewCellToFullScreenAnimation" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -334,7 +334,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				59BD399523DF3C8200A700A3 /* ThriveMart.Demo */,
+				59BD399523DF3C8200A700A3 /* CollectionViewCellToFullScreenAnimation */,
 			);
 		};
 /* End PBXProject section */
@@ -605,7 +605,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		59BD399123DF3C8200A700A3 /* Build configuration list for PBXProject "ThriveMart.Demo" */ = {
+		59BD399123DF3C8200A700A3 /* Build configuration list for PBXProject "CollectionViewCellToFullScreenAnimation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				59BD39A823DF3C9000A700A3 /* Debug */,
@@ -614,7 +614,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		59BD39AA23DF3C9000A700A3 /* Build configuration list for PBXNativeTarget "ThriveMart.Demo" */ = {
+		59BD39AA23DF3C9000A700A3 /* Build configuration list for PBXNativeTarget "CollectionViewCellToFullScreenAnimation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				59BD39AB23DF3C9000A700A3 /* Debug */,
