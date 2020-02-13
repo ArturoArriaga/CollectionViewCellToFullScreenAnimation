@@ -8,6 +8,7 @@
 
 import UIKit
 
+//MARK: NOT IMPLEMENETED
 class FooterCouponController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let couponId = "couponId"

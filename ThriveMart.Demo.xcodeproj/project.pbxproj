@@ -574,7 +574,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = AA.CollectionViewCellToFullScreenAnimation;
+				PRODUCT_BUNDLE_IDENTIFIER = AA.ThriveMart.Arriaga;
 				PRODUCT_NAME = ThriveMart.Arriaga;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -595,7 +595,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = AA.CollectionViewCellToFullScreenAnimation;
+				PRODUCT_BUNDLE_IDENTIFIER = AA.ThriveMart.Arriaga;
 				PRODUCT_NAME = ThriveMart.Arriaga;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//MARK: NOT IMPLEMENTED
 class BarCodeControler: UIViewController, CAAnimationDelegate {
     
     let gradientLayer = CAGradientLayer()

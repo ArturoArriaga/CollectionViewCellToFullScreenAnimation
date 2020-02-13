@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+//MARK: FullScreen Controller
 class FullScreenController: UITableViewController {
     
     var featuredProduct: FeaturedItem? {
@@ -22,18 +22,20 @@ class FullScreenController: UITableViewController {
         self.view.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
     }
 }
-
+//MARK: Data Source and Delegate
 extension FullScreenController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.item == 0 {
             let topCell = TopCell()
             topCell.featuredItem = self.featuredProduct
             return topCell
         }
+        
         let cell = BottomCell()
         return cell
     }
@@ -45,7 +47,7 @@ extension FullScreenController {
         return 500
     }
 }
-
+//MARK: Top Cell
 class TopCell: UITableViewCell {
     
     var featuredItem: FeaturedItem! {
@@ -84,7 +86,7 @@ class TopCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
+//MARK: Bottom Cell
 class BottomCell: UITableViewCell {
     
     let v: UIView = {
@@ -132,7 +134,7 @@ class BottomCell: UITableViewCell {
             sv.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
             return sv
         }()
-    
+    //TODO: Refactor
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(stackView)

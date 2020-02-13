@@ -9,6 +9,7 @@
 import UIKit
 
 class CouponFooterCell: UICollectionViewCell {
+    static let reuseIdentifier = "couponFooterCellId"
     
     let titleLabel: CustomLabel = {
         let tl = CustomLabel(dxPadding: 10, dyPadding: 0, height: 30)

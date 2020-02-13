@@ -9,6 +9,7 @@
 import UIKit
 
 class ProductCell: UICollectionViewCell {
+    static let reuseIdentifier = "ProductCellReuseIdentifier"
     
     var product: Product! {
         didSet {

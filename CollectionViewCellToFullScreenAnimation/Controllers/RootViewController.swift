@@ -11,6 +11,7 @@ class RootViewController: BaseCollectionViewController {
     //MARK: Instance Properites
     fileprivate var origninalStartingFrame: CGRect?
     
+    //anchors for animation.
     fileprivate var topAnchor : NSLayoutConstraint?
     fileprivate var leadingAnchor : NSLayoutConstraint?
     fileprivate var widthAnchor : NSLayoutConstraint?
@@ -18,23 +19,24 @@ class RootViewController: BaseCollectionViewController {
     
     var fullscreenViewController : FullScreenController!
 
-   fileprivate let baseCellId = "cellId"
     
     //MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView.backgroundColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setupNavigationBar()
-
-        self.collectionView.backgroundColor = #colorLiteral(red: 0.9530013204, green: 0.9494226575, blue: 0.9284337759, alpha: 1)
-        
+        registerCollectionViewCells()
+        self.collectionView.reloadData()
+    }
+    
+    //Cell Registration
+    fileprivate func registerCollectionViewCells() {
         self.collectionView.register(ProductStreamCell.self, forCellWithReuseIdentifier: ProductStreamCell.reuseIdentifier)
         self.collectionView.register(FeaturedProductCell.self, forCellWithReuseIdentifier: FeaturedProductCell.reuseIdentifier)
         self.collectionView.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCell.reuseIdentifier)
 //        self.collectionView.register(CouponFooterCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerId)
-        self.collectionView.reloadData()
-
     }
-
+    
     fileprivate func setupNavigationBar() {
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9289988279, green: 0.9077536464, blue: 0.8706553578, alpha: 1)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -61,6 +63,7 @@ extension RootViewController {
 
 /* This algorithm animates a cell to fullscreen and then back when the user desires. */
 //MARK: Did Select Item
+//Animation to full screen (0/3)
 extension RootViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.item {
@@ -70,7 +73,8 @@ extension RootViewController {
             break
         }
     }
-    
+    //MARK: Launching to full screen
+    // Animation to full screen (1/3)
      func launchToFullScreen (_ indexPath: IndexPath) {
         setupFullScreenController(indexPath)
         setupFullScreenStartingPosition(indexPath)
@@ -87,14 +91,14 @@ extension RootViewController {
         }, completion: nil)
         
     }
-    
+    //Animation to full screen (2/3)
     fileprivate func setupFullScreenController(_ indexPath: IndexPath) {
         let fsc = FullScreenController()
         fsc.featuredProduct = FeaturedItems.productStream[indexPath.item]
         fsc.view.layer.cornerRadius = 12
         self.fullscreenViewController = fsc
     }
-    
+    //Animation to full screen (3/3)
     fileprivate func setupFullScreenStartingPosition(_ indexPath: IndexPath) {
         print("Setting up Starting Position")
         let fscv = fullscreenViewController.view!
@@ -122,15 +126,13 @@ extension RootViewController {
     
     fileprivate func calculateStartingCellFrame (_ indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        
         // Make a copy of the frame so that the fsc.view can put put on top of it.
         guard let frameLocationWhenTapped = cell.superview?.convert(cell.frame, to: nil) else { return }
-        
         // Save of a copy of the originalFrame
         self.origninalStartingFrame = frameLocationWhenTapped
     }
 
-    
+    //MARK: Removal/Dimsissal of Fullscreen controller
     @objc fileprivate func handleRemoveView(gesture: UITapGestureRecognizer) {
     // The opposite of the other animation method. Constants set back to the their original position.
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
@@ -196,6 +198,8 @@ extension RootViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        //TODO: Add footer cell
 //        switch kind {
 //        case UICollectionView.elementKindSectionHeader:
 //            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCell.reuseIdentifier, for: indexPath) as! HeaderCell
@@ -210,7 +214,7 @@ extension RootViewController {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCell.reuseIdentifier, for: indexPath) as! HeaderCell
         return headerView
     }
-        
+    //MARK: CellForItemAt 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch indexPath.item {

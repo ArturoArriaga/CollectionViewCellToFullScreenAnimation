@@ -9,6 +9,7 @@
 import UIKit
 
 class AdvertisementCell: UICollectionViewCell {
+    static let reuseIdentifier = "AdvertisementCellReuseId"
     
     let imageView = UIImageView(image: #imageLiteral(resourceName: "yourAd"))
     
